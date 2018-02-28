@@ -12,13 +12,14 @@
 #define SIZE (HEIGHT*WIDTH)                        //画面サイズ(pixel数)
 
 #define SPHERES 5                                  //球体の数
-#define THREAD 16                                  //並列処理のスレッドの数(一辺)
 
 #define X_MAX 10                                   //球体を作る範囲xの最大値
 #define X_MIN -5                                   //　  　　　　　　 最小値
-#define Z_MAX 4                                    //              zの最大値
-#define Z_MIN -5                                   //                 最小値
+#define Z_MAX 4                                    //             zの最大値
+#define Z_MIN -5                                   //                最小値
 
+
+#define THREAD 16                                  //並列処理のスレッドの数(一辺)
 dim3 grids(WIDTH / THREAD, HEIGHT / THREAD);       //並列処理のブロック数
 dim3 threads(THREAD, THREAD);                      //並列処理のスレッド数
 
@@ -42,8 +43,7 @@ sphere *list;                                       //球の情報を格納す�
 
 //------------------------------------------------------------------------
 //カメラクラスの初期値
-//vec3 lookfrom(12, 2, 3);                            //視点
-vec3 lookfrom(12, 3, 12);                            //視点
+vec3 lookfrom(12, 3, 12);                           //視点
 vec3 lookat(0, 0, 0);                               //注視店
 float dist_to_foucus = (lookfrom - lookat).length();//視点から注視店までの距離
 float aperture = 0.0;                               //カメラの絞り ピントの調整
